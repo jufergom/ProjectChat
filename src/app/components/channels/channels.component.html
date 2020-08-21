@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="card mt-5 mx-auto text-center">
+        <div class="card-header align-middle">
+            <h3 class="card-text">Channels</h3>
+        </div>
+        <div class="card-body">
+            <div class="table table-hover table-responsive">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Topic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let element of elements">
+                        <td>{{ element.name }}</td>
+                        <td>{{ element.topic }}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
