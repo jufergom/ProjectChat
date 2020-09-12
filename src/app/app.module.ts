@@ -1,18 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreServicesModule} from './services/core-services.module';
 import {LoginModule} from './components/login/login.module';
 import {RegisterModule} from './components/register/register.module';
+import { ChatModule } from './components/chat/chat.module';
 
 import {ChannelsModule} from './components/channels/channels.module';
 
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +21,10 @@ import {ChannelsModule} from './components/channels/channels.module';
     CoreServicesModule,
     LoginModule,
     RegisterModule,
-    ChannelsModule
+    ChannelsModule,
+    ChatModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
