@@ -3,10 +3,10 @@
     <ul class="chat-messages-show-list" id="message-list">
     </ul>
   </div>
-  <form>
+  <form (ngSubmit)="sendMessage();" [formGroup]="form">
     <div class="chat-messages-create-container"> 
-      <input type="text" class="chat-messages-create-input" name="message" [formControl]="message">
-      <button  class="chat-messages-create-button" (click)="sendMessage()"> Send </button>
+      <input type="text" class="chat-messages-create-input" formControlName="message" name="message" [formControl]="message">
+      <button class="chat-messages-create-button" type="submit"> Send </button>
     </div>
   </form>
 </div>

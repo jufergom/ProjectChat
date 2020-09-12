@@ -11,10 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChatRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  exports: [
-    FormsModule,
-    ReactiveFormsModule
   ]
 })
 export class ChatModule { }

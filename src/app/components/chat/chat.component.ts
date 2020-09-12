@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
@@ -11,12 +11,13 @@ export class ChatComponent implements OnInit {
 
   SOCKET_ENDPOINT: string = 'localhost:3000';
 
-  message = new FormControl('');
+  form: FormGroup;
 
   socket: any;
 
   constructor() {
     this.setupSocketConnection();
+    this.form = new FormGroup({message: new FormControl("")});
   }
 
   ngOnInit(): void {
@@ -37,16 +38,17 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    this.socket.emit('message', this.message);
+    const message = this.form.value;
+    this.socket.emit('message', message.message);
     console.log("emmited");
     const element = document.createElement('li');
-    element.innerHTML = this.message.value;
+    element.innerHTML = message.message;
     element.style.background = 'white';
     element.style.padding =  '15px 30px';
     element.style.margin = '10px';
     element.style.textAlign = 'right';
     document.getElementById('message-list').appendChild(element);
-    this.message.setValue('');
+    
   }
 
 }
