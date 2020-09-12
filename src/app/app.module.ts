@@ -8,11 +8,11 @@ import {LoginModule} from './components/login/login.module';
 import {RegisterModule} from './components/register/register.module';
 
 import {ChannelsModule} from './components/channels/channels.module';
-
+import { ChatModule } from './components/chat/chat.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,8 @@ import {ChannelsModule} from './components/channels/channels.module';
     CoreServicesModule,
     LoginModule,
     RegisterModule,
-    ChannelsModule
+    ChannelsModule,
+    ChatModule
   ],
   providers: [],
   bootstrap: [AppComponent]
