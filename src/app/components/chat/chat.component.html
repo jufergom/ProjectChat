@@ -5,7 +5,7 @@
   </div>
   <form (ngSubmit)="sendMessage();" [formGroup]="form">
     <div class="chat-messages-create-container"> 
-      <input type="text" class="chat-messages-create-input" formControlName="message" name="message" [formControl]="message">
+      <input type="text" class="chat-messages-create-input" formControlName="message" name="message">
       <button class="chat-messages-create-button" type="submit"> Send </button>
     </div>
   </form>
