@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +15,11 @@ export class ChatComponent implements OnInit {
 
   socket: any;
 
-  constructor() { }
+  channelId: string;
+
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.channelId = this.activatedRoute.snapshot.paramMap.get('channelId');
+   }
 
   ngOnInit(): void {
     this.setupSocketConnection();
@@ -22,8 +27,9 @@ export class ChatComponent implements OnInit {
 
   setupSocketConnection() {
     this.socket = io(this.SOCKET_ENDPOINT);
-    this.socket.on('message-broadcast', (data: string) => {
-      if (data) {
+    this.socket.on('message-broadcast', (data: string, id: string) => {
+      console.log(data, id);
+      if (data && id == this.channelId) {
        const element = document.createElement('li');
        element.innerHTML = data;
        element.style.background = 'white';
@@ -35,8 +41,7 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    this.socket.emit('message', this.message);
-    console.log("emmited");
+    this.socket.emit('message', this.channelId, this.message);
     const element = document.createElement('li');
     element.innerHTML = this.message;
     element.style.background = 'white';
