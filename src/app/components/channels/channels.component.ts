@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./channels.component.css']
 })
 export class ChannelsComponent implements OnInit {
+  formShowed: boolean = false;
 
   elements: any[]= [
     { name:'Projecto 1', topic: 'Topic 1'},
@@ -19,6 +20,10 @@ export class ChannelsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showForm():void{
+    this.formShowed= !this.formShowed;
   }
 
 }
