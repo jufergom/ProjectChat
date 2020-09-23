@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit {
       console.log(data, id);
       if (data && id == this.channelId) {
        const element = document.createElement('li');
-       element.innerHTML = data;
+       element.innerHTML = `<h4>Julito:</h4> ${data}`;
        element.style.background = 'white';
        element.style.padding =  '15px 30px';
        element.style.margin = '10px';
@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     this.socket.emit('message', this.channelId, this.message);
     const element = document.createElement('li');
-    element.innerHTML = this.message;
+    element.innerHTML = `<h4>Julito:</h4> ${this.message}`;
     element.style.background = 'white';
     element.style.padding =  '15px 30px';
     element.style.margin = '10px';
