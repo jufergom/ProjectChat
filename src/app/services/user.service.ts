@@ -8,8 +8,8 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UserService {
   //Definir url
-  baseUrl: string = "";
-  credentialUrl: string = "";
+  baseUrl: string = "https://localhost:5001/api/user";
+  credentialUrl: string = "https://localhost:5001/api/user/credentials";
   constructor(private httpClient: HttpClient) { }
 
   verifyUserCredentials(user: User): Observable<boolean>{
