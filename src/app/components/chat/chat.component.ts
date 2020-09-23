@@ -31,11 +31,11 @@ export class ChatComponent implements OnInit {
 
   setupSocketConnection() {
     this.socket = io(this.SOCKET_ENDPOINT);
-    this.socket.on('message-broadcast', (data: string, id: string) => {
+    this.socket.on('message-broadcast', (data: string, id: string, username: string) => {
       console.log(data, id);
       if (data && id == this.channelId) {
        const element = document.createElement('li');
-       element.innerHTML = `<h4>${this.getNameFromStorage()}:</h4> ${data}`;
+       element.innerHTML = `<h4>${username}:</h4> ${data}`;
        element.style.background = 'white';
        element.style.padding =  '15px 30px';
        element.style.margin = '10px';
@@ -45,7 +45,7 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    this.socket.emit('message', this.channelId, this.message);
+    this.socket.emit('message', this.channelId, this.message, this.getNameFromStorage());
     const element = document.createElement('li');
     element.innerHTML = `<h4>${this.getNameFromStorage()}:</h4> ${this.message}`;
     element.style.background = 'white';
