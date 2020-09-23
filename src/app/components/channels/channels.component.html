@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let element of elements">
-                        <td>{{ element.name }}</td>
+                        <td><a routerLink="/chat/{{element.id}}" >{{ element.name }}</a></td>
                         <td>{{ element.topic }}</td>
                     </tr>
                 </tbody>

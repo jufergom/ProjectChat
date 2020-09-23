@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import {FormGroup,FormControl,Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void{
     console.log(this.form);
+    this.router.navigate(['/channels']);
   }
 
 }
