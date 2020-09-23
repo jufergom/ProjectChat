@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     console.log(this.form.value);
     this.userService.verifyUserCredentials(user).subscribe((status: boolean) => {
       if(status) {
+        window.localStorage.setItem("username", user.username);
         this.router.navigate(['/channels']);
       }
       else {

@@ -25,13 +25,17 @@ export class ChatComponent implements OnInit {
     this.setupSocketConnection();
   }
 
+  getNameFromStorage(): string {
+    return window.localStorage.getItem("username");
+  }
+
   setupSocketConnection() {
     this.socket = io(this.SOCKET_ENDPOINT);
     this.socket.on('message-broadcast', (data: string, id: string) => {
       console.log(data, id);
       if (data && id == this.channelId) {
        const element = document.createElement('li');
-       element.innerHTML = `<h4>Julito:</h4> ${data}`;
+       element.innerHTML = `<h4>${this.getNameFromStorage()}:</h4> ${data}`;
        element.style.background = 'white';
        element.style.padding =  '15px 30px';
        element.style.margin = '10px';
@@ -43,7 +47,7 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     this.socket.emit('message', this.channelId, this.message);
     const element = document.createElement('li');
-    element.innerHTML = `<h4>Julito:</h4> ${this.message}`;
+    element.innerHTML = `<h4>${this.getNameFromStorage()}:</h4> ${this.message}`;
     element.style.background = 'white';
     element.style.padding =  '15px 30px';
     element.style.margin = '10px';
