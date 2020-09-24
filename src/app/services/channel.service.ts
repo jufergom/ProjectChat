@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ChannelService {
-  baseUrl: string = "";
+  baseUrl: string = "https://localhost:5001/api/channel";
   constructor(private httpClient: HttpClient) { }
 
   getUserChannels(username:string): Observable<Channel[]>{
@@ -19,7 +19,7 @@ export class ChannelService {
     return this.httpClient.get<User[]>(this.baseUrl+id);
   }
 
-  assignChannelToUser(id: number): Observable<boolean>{
-    return this.httpClient.post<boolean>(this.baseUrl+id,{});
+  assignChannelToUser(id: number, username: string): Observable<boolean>{
+    return this.httpClient.post<boolean>(`${this.baseUrl}/${id}/${username}`,{});
   }
 }

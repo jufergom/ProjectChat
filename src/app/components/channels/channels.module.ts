@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ChannelsRoutingModule} from './channels-routing.module';
 import {ChannelsComponent} from './channels.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ChannelsComponent],
   imports: [
     CommonModule,
-    ChannelsRoutingModule
+    ChannelsRoutingModule,
+    FormsModule
   ]
 })
 export class ChannelsModule { }

@@ -18,8 +18,8 @@
         <div class="card-body">
             <form>
                 <label for="channelCode" class="font-weight-bolder">Channel Code</label>
-                <input type="text" class="form-control">
-                <button type="button" class="mt-2 btn btn-dark form-control">Add Channel</button>
+                <input type="text" class="form-control" name="channelCode" [(ngModel)]="channelCode">
+                <button type="button" class="mt-2 btn btn-dark form-control" (click)="addChannel()">Add Channel</button>
             </form>
         </div>
     </div>
@@ -36,9 +36,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let element of elements">
-                        <td><a routerLink="/chat/{{element.id}}" >{{ element.name }}</a></td>
-                        <td>{{ element.topic }}</td>
+                    <tr *ngFor="let channel of channels">
+                        <td><a routerLink="/chat/{{channel.id}}" >{{ channel.name }}</a></td>
+                        <td>{{ channel.topic }}</td>
                     </tr>
                 </tbody>
             </div>
